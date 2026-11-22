@@ -1,0 +1,214 @@
+{
+  "schemaVersion": 1,
+  "corrections": [
+    {
+      "type": "code-format-normalisation",
+      "code": "111131",
+      "field": "code",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "111131",
+      "corrected": "111131",
+      "reason": "Code stored as text in the source; normalised to the standard digit string.",
+      "id": "C0001"
+    },
+    {
+      "type": "encoding-anomaly",
+      "code": "231699",
+      "field": "Occupation in NEC category",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "RÃ©pÃ©titeur",
+      "corrected": "Repetiteur",
+      "reason": "Encoding-corrupted text in the Category Descriptions workbook; the Titles Index form is used.",
+      "id": "C0002"
+    },
+    {
+      "type": "source-title-disagreement",
+      "code": "2619",
+      "field": "Occupation Title",
+      "source": "descriptions",
+      "table": "Table 2",
+      "original": "Other Allied Health Counsellors, Psychologists, Social Workers and Creative Therapy Professionals",
+      "corrected": "Other Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals",
+      "reason": "Structure Table 5 is the authoritative title source.",
+      "id": "C0003"
+    },
+    {
+      "type": "source-title-disagreement",
+      "code": "2619",
+      "field": "title",
+      "source": "structure",
+      "table": "Table 4",
+      "original": "Other Allied Health Counselling, Psychology, Social Works and Creative Therapy Professionals",
+      "corrected": "Other Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals",
+      "reason": "Structure Table 5 is the authoritative title source; this table's variant is not used.",
+      "id": "C0004"
+    },
+    {
+      "type": "source-title-disagreement",
+      "code": "261999",
+      "field": "Principal Title",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Allied Health Counsellors, Psychologists, Social Workers and Creative Therapy Professionals nec",
+      "corrected": "Allied Health Counselling, Psychology, Social Work and Creative Therapy Professionals nec",
+      "reason": "Structure Table 5 (confirmed by the Titles Index) is the authoritative title source.",
+      "id": "C0005"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231432",
+      "field": "Main Tasks",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Ensures that the artistic and creative elements of audio or live performance productions are executed according to the vision and objectives; Collaborates with writers and producers to select scripts and develop concepts for productions; Directs Actors, musicians and technical crew by providing guidance and instruction during rehearsals and performances; Reviews and approves the selection of costumes, sets, props and other visual elements; Collaborates with Cinematographers, audio engineers and other technical staff to achieve desired visual and audio effects; May oversee the editing and post-production process of audio production ",
+      "corrected": "Ensures that the artistic and creative elements of audio or live performance productions are executed according to the vision and objectives; Collaborates with writers and producers to select scripts and develop concepts for productions; Directs Actors, musicians and technical crew by providing guidance and instruction during rehearsals and performances; Reviews and approves the selection of costumes, sets, props and other visual elements; Collaborates with Cinematographers, audio engineers and other technical staff to achieve desired visual and audio effects; May oversee the editing and post-production process of audio production",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0006"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231432",
+      "field": "Skill Attributes",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "corrected": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0007"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231436",
+      "field": "Main Tasks",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Collaborates with writers and producers to select scripts and develop concepts for productions; Leads film and television teams from pre-production to completion, guiding the creative vision; Hires heads of departments on a production and selects cast and crew alongside the Casting Director; Directs actors and scenes, including camera shots, audio and lighting, to translate the screenplay into a visual narrative on screen; Oversees post-production activities such as editing, audio and colour grading ",
+      "corrected": "Collaborates with writers and producers to select scripts and develop concepts for productions; Leads film and television teams from pre-production to completion, guiding the creative vision; Hires heads of departments on a production and selects cast and crew alongside the Casting Director; Directs actors and scenes, including camera shots, audio and lighting, to translate the screenplay into a visual narrative on screen; Oversees post-production activities such as editing, audio and colour grading",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0008"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231436",
+      "field": "Skill Attributes",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "corrected": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0009"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231437",
+      "field": "Specialisations",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Art Director (Screen); Costume Designer; Lighting Designer; Production Designer (Screen); Set Designer ",
+      "corrected": "Art Director (Screen); Costume Designer; Lighting Designer; Production Designer (Screen); Set Designer",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0010"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231437",
+      "field": "Specialisation",
+      "source": "index",
+      "table": "Table 2",
+      "original": "Set Designer ",
+      "corrected": "Set Designer",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0011"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "231932",
+      "field": "Skill Attributes",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "corrected": "High levels of creative talent, interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0012"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "232231",
+      "field": "Skill Attributes",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "High levels of interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "corrected": "High levels of interest and personal commitment may substitute for formal qualifications or years of experience.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0013"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "242133",
+      "field": "Inclusion and Exclusion Statements",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Multimedia Designers, user experience designers and user interface designers are excluded from this occupation. Multimedia Designers are included in Occupation 242131 Multimedia Designer. User experience designers and user interface designers are included in Occupation 242132 UI / UX Designer. ",
+      "corrected": "Multimedia Designers, user experience designers and user interface designers are excluded from this occupation. Multimedia Designers are included in Occupation 242131 Multimedia Designer. User experience designers and user interface designers are included in Occupation 242132 UI / UX Designer.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0014"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "264341",
+      "field": "Inclusion and Exclusion Statements",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Paediatric nephrologists are included in this occupation. ",
+      "corrected": "Paediatric nephrologists are included in this occupation.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0015"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "273232",
+      "field": "Inclusion and Exclusion Statements",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Business analysts (non-ICT) are excluded from this occupation. Business analysts (non- ICT) are included in Occupation 223432 Management Consultant. ",
+      "corrected": "Business analysts (non-ICT) are excluded from this occupation. Business analysts (non- ICT) are included in Occupation 223432 Management Consultant.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0016"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "341133",
+      "field": "Inclusion and Exclusion Statements",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Horse Trainers are excluded from this occupation. Horse Trainers are included in Occupation 341132 Horse Trainer. ",
+      "corrected": "Horse Trainers are excluded from this occupation. Horse Trainers are included in Occupation 341132 Horse Trainer.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0017"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "713131",
+      "field": "Inclusion and Exclusion Statements",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Articulated Truck Drivers, Delivery Drivers and Tanker Truck Drivers are excluded from this occupation. Articulated Truck Drivers are included in Occupation 713231 Articulated Truck Driver. Delivery Drivers are included in Minor Group 712 Delivery Drivers. Tanker Truck Drivers are included in Occupation 713232 Tanker Truck Driver. ",
+      "corrected": "Articulated Truck Drivers, Delivery Drivers and Tanker Truck Drivers are excluded from this occupation. Articulated Truck Drivers are included in Occupation 713231 Articulated Truck Driver. Delivery Drivers are included in Minor Group 712 Delivery Drivers. Tanker Truck Drivers are included in Occupation 713232 Tanker Truck Driver.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0018"
+    },
+    {
+      "type": "whitespace-normalisation",
+      "code": "899231",
+      "field": "Main Tasks",
+      "source": "descriptions",
+      "table": "Table 1",
+      "original": "Operates and maintains deck equipment, rigging, and lifesaving and firefighting equipment; Handles and secures lines and ropes during docking procedures; Keeps lookout while vessel is at sea; Assists passengers with enquiries and luggage needs; Assists with loading and unloading cargo; Maintains the appearance of deck structures by removing rust, treating and painting as necessary; Maintains a vessel's kitchens, laundries, cabins and recreation areas; Assists in maintaining cleanliness and seaworthiness of a vessel; May serve food and drinks onboard a passenger vessel; May perform routine mechanical tasks on smaller vessels; May perform routine mechanical tasks on smaller vessels.   ",
+      "corrected": "Operates and maintains deck equipment, rigging, and lifesaving and firefighting equipment; Handles and secures lines and ropes during docking procedures; Keeps lookout while vessel is at sea; Assists passengers with enquiries and luggage needs; Assists with loading and unloading cargo; Maintains the appearance of deck structures by removing rust, treating and painting as necessary; Maintains a vessel's kitchens, laundries, cabins and recreation areas; Assists in maintaining cleanliness and seaworthiness of a vessel; May serve food and drinks onboard a passenger vessel; May perform routine mechanical tasks on smaller vessels; May perform routine mechanical tasks on smaller vessels.",
+      "reason": "Leading/trailing whitespace, non-breaking spaces or repeated spaces normalised.",
+      "id": "C0019"
+    }
+  ]
+}

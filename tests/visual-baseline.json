@@ -1,0 +1,24 @@
+{
+  "$comment": "Approved visual baseline. CI builds this commit, screenshots it with the current tests and fails on any difference. \"initial\" means this repository's first commit: the approved release snapshot. To approve an intentional visual change: review the diff images from the failing Validate run, then set approvedCommit to the commit that introduced the change (full hash) and add a history entry.",
+  "approvedCommit": "initial",
+  "approvedOn": "2026-11-22",
+  "approvedBy": "Afshin Tanouri",
+  "reason": "Initial public release: the approved prototype release build.",
+  "history": [
+    {
+      "commit": "initial",
+      "approvedOn": "2026-11-22",
+      "approvedBy": "Afshin Tanouri",
+      "screens": [
+        "all 18 screens"
+      ],
+      "viewports": [
+        "phone",
+        "tablet",
+        "desktop",
+        "kiosk"
+      ],
+      "reason": "Initial public release snapshot of the validated and approved prototype release build (all 72 screenshots): MBA Matchmaker, Career Explorer, Capability Bridge, Experience Hub and My MBA Future; prototype roadshow status in the footer and About this prototype; Career Explorer About this tool note; ABS CC BY 4.0 attribution with adaptation notice and non-endorsement statement; MBA team contact; share wording 'My MBA Future'."
+    }
+  ]
+}

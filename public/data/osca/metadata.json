@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "classification": "OSCA - Occupation Standard Classification for Australia",
+  "classificationYear": "2024",
+  "version": "1.0",
+  "publisher": "Australian Bureau of Statistics",
+  "copyright": "Commonwealth of Australia",
+  "licenceStatus": "cc-by-4.0",
+  "licence": {
+    "name": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "source": "https://www.abs.gov.au/website-privacy-copyright-and-disclaimer#copyright-and-creative-commons",
+    "checkedOn": "2026-11-21"
+  },
+  "licenceNote": "ABS material is provided under CC BY 4.0, except (among others) the Commonwealth Coat of Arms, the ABS logo and OSCA branding and artwork, which are not used in this dataset. This dataset is adapted: codes are normalised as strings, whitespace is normalised, official tables are combined and split into static files, and source anomalies are corrected and logged (corrections.json).",
+  "sourceUrl": "https://www.abs.gov.au/statistics/classifications/osca-occupation-standard-classification-australia/2024-version-1-0",
+  "releases": {
+    "structure": "2024-12-06",
+    "index": "2024-12-06",
+    "categoryDescriptions": "2025-07-28"
+  },
+  "sources": [
+    {
+      "id": "structure",
+      "path": "data/osca/raw/current/OSCA structure.xlsx",
+      "sha256": "ba4343a88fc98d4c8ad7f8eb76965ed20452500a84807ccf3553e690097c474f",
+      "statedRelease": "Released at 11:30am (Canberra time) 6 December 2024",
+      "tablesUsed": [
+        "Table 1",
+        "Table 2",
+        "Table 3",
+        "Table 4",
+        "Table 5"
+      ],
+      "includedInDataset": true
+    },
+    {
+      "id": "descriptions",
+      "path": "data/osca/raw/current/OSCA Category Descriptions.xlsx",
+      "sha256": "4412b0a20a54ab7bab01063b83bec4ee0a29768204f84a36851d82b661238fe8",
+      "statedRelease": "Released at 11:30am (Canberra time) 28 July 2025",
+      "tablesUsed": [
+        "Table 1",
+        "Table 2"
+      ],
+      "includedInDataset": true
+    },
+    {
+      "id": "index",
+      "path": "data/osca/raw/current/OSCA index of principal titles alternative titles and specialisations.xlsx",
+      "sha256": "8c359ee1ca95cfc913dd788606d8abfc41ea39a7c38fdaead47c8e186559241c",
+      "statedRelease": "Released at 11:30am (Canberra time) 6 December 2024",
+      "tablesUsed": [
+        "Table 1 (cross-check)",
+        "Table 2"
+      ],
+      "includedInDataset": true
+    }
+  ],
+  "referenceOnly": [
+    {
+      "path": "data/osca/raw/reference/OSCA correspondence tables v2.xlsx",
+      "sha256": "a88be381b95a7d3c1340588c374e260bd27b9c9198b4d8a48b8c71016bb64ae9",
+      "statedRelease": "Released at 11:30am (Canberra time) 6 December 2024",
+      "note": "Reference only (OSCA <-> ANZSCO v1.3 / 2021 / 2022, ISCO-08, NZ NOL v1.0). Checksum-verified but never opened by the importer."
+    }
+  ],
+  "importer": {
+    "script": "scripts/osca/import_osca.py",
+    "version": "1.0.0"
+  },
+  "counts": {
+    "majorGroups": 8,
+    "subMajorGroups": 53,
+    "minorGroups": 111,
+    "unitGroups": 421,
+    "groups": 593,
+    "occupations": 1156,
+    "groupDescriptions": 593,
+    "occupationDescriptions": 1156,
+    "indexTitles": 3338
+  },
+  "corrections": {
+    "code-format-normalisation": 1,
+    "encoding-anomaly": 1,
+    "source-title-disagreement": 3,
+    "whitespace-normalisation": 14
+  },
+  "files": {
+    "occupations-index.json": "Lightweight search index: titles, nec semantics, skill level, hierarchy codes, searchText.",
+    "occupations-details/{majorGroupCode}.json": "Occupation-level descriptive text keyed by code (lead statement, main tasks, statements), one file per major group (the first digit of the code) so a detail view loads only its own group.",
+    "groups.json": "Major, sub-major, minor and unit groups with group-level descriptions.",
+    "corrections.json": "Every normalisation and source anomaly, machine-readable."
+  },
+  "searchNormalisation": "searchText = each official title lower-cased, NFKD with diacritics removed, non-alphanumerics replaced by spaces, whitespace collapsed; titles joined with ' | '. Match on whole tokens, never raw substrings (so 'ai' does not match 'thai').",
+  "generatedAt": "2026-11-21T06:11:33Z"
+}

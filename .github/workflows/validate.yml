@@ -1,0 +1,153 @@
+# Validation: generated-data integrity, unit tests, build, smoke tests and
+# visual regression. Runs on pushes to main, on pull requests, and on manual
+# dispatch. This workflow NEVER deploys.
+#
+# The official ABS workbooks and the career research layer are maintained
+# outside this repository; their generated outputs are verified here by
+# checksum (data/generated-data.sha256) and validated structurally.
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      baseline_ref:
+        description: "Git ref whose build is used as the visual baseline (default: the approved commit in tests/visual-baseline.json)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NEXT_PUBLIC_BASE_PATH: /flindersmba
+  NEXT_TELEMETRY_DISABLED: "1"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4 # version read from package.json "packageManager" (pnpm@12.3.4)
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generated OSCA and career data match the reviewed release
+        run: pnpm verify:generated-data
+
+      - name: Unit tests (content validation, IDs, routes, share format)
+        run: pnpm test:unit
+
+      - name: Build static export (also validates content)
+        run: pnpm build
+
+      - name: Verify export
+        run: |
+          test -f out/index.html
+          test -f out/.nojekyll
+          grep -q '/flindersmba/_next/' out/index.html
+          echo "Export OK: out/.nojekyll present, assets under /flindersmba/_next/"
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Smoke tests
+        run: pnpm test:smoke
+
+      # ---- Visual regression -------------------------------------------
+      # Baseline screenshots are not committed. Instead the APPROVED baseline
+      # commit (tests/visual-baseline.json) is built here and screenshotted
+      # with the SAME test definitions, then the current build is compared
+      # against it on the same runner. A visual change keeps failing until
+      # it is explicitly approved by updating tests/visual-baseline.json.
+      - name: Resolve visual baseline ref
+        id: base
+        run: |
+          REF="${{ github.event.inputs.baseline_ref }}"
+          if [ -z "$REF" ] && [ -f tests/visual-baseline.json ]; then
+            REF="$(node -p "require('./tests/visual-baseline.json').approvedCommit || ''")"
+            echo "Approved visual baseline from tests/visual-baseline.json: $REF"
+            # "initial" = the repository's first commit (the approved release snapshot).
+            if [ "$REF" = "initial" ]; then
+              REF="$(git rev-list --max-parents=0 HEAD)"
+              echo "initial -> root commit $REF"
+            fi
+          fi
+          if [ -z "$REF" ] && [ "${{ github.event_name }}" = "pull_request" ]; then
+            REF="${{ github.event.pull_request.base.sha }}"
+          fi
+          if [ -z "$REF" ] && [ "${{ github.event_name }}" = "push" ]; then
+            REF="${{ github.event.before }}"
+          fi
+          if [ -z "$REF" ] || [ "$REF" = "0000000000000000000000000000000000000000" ]; then
+            REF="$(git rev-parse HEAD^ 2>/dev/null || true)"
+          fi
+          if [ -n "$REF" ] && git cat-file -e "$REF^{commit}" 2>/dev/null; then
+            echo "ref=$REF" >> "$GITHUB_OUTPUT"
+            echo "Visual baseline: $REF"
+          else
+            echo "No usable baseline ref; visual comparison skipped."
+          fi
+
+      - name: Build visual baseline
+        if: steps.base.outputs.ref != ''
+        run: |
+          git worktree add --detach "$RUNNER_TEMP/baseline" "${{ steps.base.outputs.ref }}"
+          cd "$RUNNER_TEMP/baseline"
+          pnpm install --frozen-lockfile
+          pnpm exec next build
+
+      # Both builds must be served from the SAME origin (default port 4173):
+      # rendered content can depend on the page URL (e.g. the My MBA Future QR
+      # code encodes the share link), so a different port would change pixels.
+      - name: Capture baseline screenshots
+        if: steps.base.outputs.ref != ''
+        env:
+          PW_SERVE_DIR: ${{ runner.temp }}/baseline/out
+          PW_SNAPSHOT_DIR: visual-baseline
+        run: pnpm exec playwright test --project='visual-*' --update-snapshots=all --reporter=dot
+
+      - name: Compare current build with baseline
+        if: steps.base.outputs.ref != ''
+        env:
+          PW_SNAPSHOT_DIR: visual-baseline
+        run: pnpm exec playwright test --project='visual-*'
+
+      - name: Upload Playwright report and diffs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Upload baseline screenshots
+        if: always() && steps.base.outputs.ref != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-baseline
+          path: visual-baseline/
+          retention-days: 14
+          if-no-files-found: ignore

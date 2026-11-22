@@ -1,0 +1,15 @@
+# SHA-256 of generated data (OSCA dataset and production career data) in the reviewed release.
+# Verified by `pnpm verify:generated-data`. Regenerate only from the source pipeline.
+45068ca58ba2b1e70bae305f3078483ca57436bacc321512d38377303e2ed028  content/careers/career-directions.generated.json
+f8c3c10280e35a2c1256bb9851f99fbc2b95f571e57aab043e0bc9faab19dfba  public/data/osca/corrections.json
+662dba8499fc55dc1c2180c2f8b2b6857df4cd0a7890aae4c7fc04a3bae340dc  public/data/osca/groups.json
+93d6bdefdb3b0d57b8e6433295edd99007c0534e6b2b8c1565276af949b798da  public/data/osca/metadata.json
+4f4074a7a005a5beabb9863b02c371237a2635d0ec3a5fe7aeb6d97a791a4300  public/data/osca/occupations-details/1.json
+760400938ae10aba634bcbfb30040aea9f2b7eac404b087eb6ec7dc9b03c241a  public/data/osca/occupations-details/2.json
+d685d93d9b6e3117f55160f345b34d979ebd75c503d198a5e0a765d56b260be0  public/data/osca/occupations-details/3.json
+d27373747d294770559cab55011e17ef4e340844dbecf912509fb2a7db169f75  public/data/osca/occupations-details/4.json
+ceac4b0a5f796438dcfd42e5a25477b9cc12899bd450dd39489ed0f9d869f97e  public/data/osca/occupations-details/5.json
+67a846c2f229befff2ca2bfe06fc52a74394213026f1b6fa7ed8a75cb4846cc9  public/data/osca/occupations-details/6.json
+fdc9c6d7df6bec84a8cede3089e79bb7dd8a4359e2c53db96d06ece82eb36f0d  public/data/osca/occupations-details/7.json
+2c6d405cec8ebaf6a548d563a3f60434d69affc0e5c02c2c5910f9a5b07d5c4e  public/data/osca/occupations-details/8.json
+00805918189711711c8abcc5bee4651cc42646ebc6f7f36df2d41ce3bd5c7a9f  public/data/osca/occupations-index.json
