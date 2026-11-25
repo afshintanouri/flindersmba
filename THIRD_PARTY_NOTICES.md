@@ -11,7 +11,7 @@ Australia, 2024, Version 1.0*
 © Commonwealth of Australia, licensed under Creative Commons Attribution 4.0 International (CC BY 4.0,
 https://creativecommons.org/licenses/by/4.0/). Source material has been adapted (codes and whitespace normalised,
 source tables combined and restructured into static files, recorded source anomalies corrected; official text is
-shown in brief). The ABS does not endorse this prototype. ABS copyright and disclaimer:
+shown in brief). The ABS does not endorse this tool. ABS copyright and disclaimer:
 https://www.abs.gov.au/website-privacy-copyright-and-disclaimer. The CC BY 4.0 licence applies to this ABS-derived
 material only, not to the rest of the application.
 
@@ -22,11 +22,17 @@ Condensed Bold), version 1.408. Copyright 2017 The Barlow Project Authors (https
 Licensed under the SIL Open Font License, Version 1.1: see [`third-party/barlow/OFL.txt`](third-party/barlow/OFL.txt).
 The files are renamed but unmodified.
 
+## Flinders University logo
+
+`public/flinders.svg` is the Flinders University logo, a trademark of Flinders University. Flinders University
+Marketing and Compliance approved its use in this demonstration application (25 November 2026). It is not licensed
+for any other use and must not be modified or redrawn.
+
 ## Illustrative imagery
 
 `public/hero.webp`, `public/campus.webp`, `public/city.webp` and `public/industry.webp` are AI-generated images
 (generated with Google AI; the original files carried the "Made with Google AI" C2PA/IPTC provenance marking, which
-the WebP conversion did not keep). They were generated for this prototype during its design and are not photographs
+the WebP conversion did not keep). They were generated for this application during its design and are not photographs
 of actual Flinders University facilities, students, staff or locations.
 
 ## npm dependencies

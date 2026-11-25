@@ -15,7 +15,7 @@ import {
   getExperience,
   getProgram,
 } from "@/content";
-import { prototypeStatus } from "@/content/prototype";
+import { aboutExperience } from "@/content/about";
 import type { CareerClusterId, CareerDirection, CareerDirectionId, CareerPresentation } from "@/content/types";
 import { buildOscaSearchIndex, searchCareerDirections, searchOsca, type OscaHit } from "@/lib/careers/search";
 import {
@@ -51,14 +51,14 @@ const TITLE_TYPE_LABEL: Record<OscaHit["matchedTitleType"], string> = {
 };
 
 /**
- * About this tool: what is ABS data and what is prototype interpretation. Shown
+ * About this tool: what is ABS data and what is curated interpretation. Shown
  * above (and separate from) the formal ABS attribution on Career Explorer pages.
  */
 export function CareerAbout() {
   return (
     <div className="career-about">
-      <h2 className="micro">{prototypeStatus.careerAboutHeading.toUpperCase()}</h2>
-      <p className="note">{prototypeStatus.careerAbout}</p>
+      <h2 className="micro">{aboutExperience.careerAboutHeading.toUpperCase()}</h2>
+      <p className="note">{aboutExperience.careerAbout}</p>
       <p className="note">{careerDisclaimer}</p>
     </div>
   );

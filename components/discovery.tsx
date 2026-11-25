@@ -9,7 +9,7 @@ import { CareerCluster, CareerPage, Careers, OccupationProfile } from "./careers
 import { Experiences } from "./experiences";
 import { Journey } from "./journey";
 import { AboutPanel, ContactPanel, SiteFooter } from "./contact";
-import { prototypeStatus } from "@/content/prototype";
+import { aboutExperience } from "@/content/about";
 import { contactCopy } from "@/content/contact";
 import {
   emptyJourney,
@@ -40,7 +40,7 @@ const modalLabels: Record<Exclude<Modal, "">, string> = {
   idle: "Ready for the next MBA journey?",
   "share-error": "This shared link could not be opened",
   contact: contactCopy.panelHeading,
-  about: prototypeStatus.aboutHeading,
+  about: aboutExperience.aboutHeading,
 };
 
 /** Journey storage: localStorage normally; this tab's sessionStorage only in kiosk mode. */
@@ -269,13 +269,13 @@ export function Discovery() {
                     : modal === "contact"
                       ? `${contactCopy.panelHeading}.`
                       : modal === "about"
-                        ? `${prototypeStatus.aboutHeading}.`
+                        ? `${aboutExperience.aboutHeading}.`
                         : "Your discovery paths"}
           </h2>
           {modal === "contact" ? (
             <ContactPanel kiosk={kiosk} onJourney={() => go("journey")} />
           ) : modal === "about" ? (
-            <AboutPanel />
+            <AboutPanel kiosk={kiosk} />
           ) : modal === "idle" ? (
             <>
               <p>

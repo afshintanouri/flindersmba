@@ -324,8 +324,7 @@ export function Compare({ p, go }: { p: Journey; go: Go }) {
         </tbody>
       </table>
       <p className="note">
-        A dash means the capability is not a listed specialist focus in this
-        prototype.
+        A dash means the capability is not a listed specialist focus for that MBA.
       </p>
       <div className="actions">
         <Action onClick={() => go("journey")}>See my MBA future</Action>

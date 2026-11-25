@@ -1,6 +1,6 @@
 import { ArrowRight, ArrowUpRight, Mail } from "lucide-react";
 import { contactCopy, contactMailto, mbaContact } from "@/content/contact";
-import { prototypeStatus } from "@/content/prototype";
+import { aboutExperience as about, OFFICIAL_FLINDERS_URL } from "@/content/about";
 
 /** The standard LinkedIn mark (lucide-react v1 ships no brand icons). Decorative. */
 export function LinkedInIcon({ size = 18 }: { size?: number }) {
@@ -88,19 +88,49 @@ export function JourneyContact() {
 }
 
 /**
- * About this prototype (inside the existing dialog). No links: the general Flinders MBA
- * page URL is not yet verified, so it is not linked here.
+ * About this experience (inside the existing dialog): the Marketing/Compliance-approved
+ * wording in three short sections. On a shared kiosk the website is named, not linked,
+ * so visitors are never sent away from the roadshow screen.
  */
-export function AboutPanel() {
+export function AboutPanel({ kiosk }: { kiosk: boolean }) {
+  const c = about.contentInfo;
   return (
     <div className="about-panel">
-      <p>{prototypeStatus.statement}</p>
-      <p className="note">{prototypeStatus.sources}</p>
+      <section aria-label={about.aboutHeading}>
+        <p>{about.about}</p>
+      </section>
+      <section aria-labelledby="about-occupation-data">
+        <h3 className="micro" id="about-occupation-data">
+          {about.occupationDataHeading.toUpperCase()}
+        </h3>
+        <p className="note">{about.occupationData}</p>
+      </section>
+      <section aria-labelledby="about-content-information">
+        <h3 className="micro" id="about-content-information">
+          {about.contentHeading.toUpperCase()}
+        </h3>
+        <p className="note">
+          {c.before}
+          {kiosk ? (
+            c.linkText
+          ) : (
+            <a
+              href={OFFICIAL_FLINDERS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${c.linkText} (opens in a new tab)`}
+            >
+              {c.linkText}
+            </a>
+          )}
+          {c.after}
+        </p>
+      </section>
     </div>
   );
 }
 
-/** Restrained global footer: product, prototype status, contact prompt, About. */
+/** Restrained global footer: product, contact prompt, About this experience. */
 export function SiteFooter({
   onContact,
   onAbout,
@@ -114,8 +144,7 @@ export function SiteFooter({
     <footer className="site-footer">
       <div className="wrap site-footer-inner">
         <p className="footer-status">
-          <span className="micro">{prototypeStatus.product.toUpperCase()}</span>
-          <span>{prototypeStatus.label}</span>
+          <span className="micro">{about.product.toUpperCase()}</span>
         </p>
         <p className="footer-prompt">
           <span className="micro">{contactCopy.footerPrompt.toUpperCase()}</span>
@@ -137,7 +166,7 @@ export function SiteFooter({
           aria-expanded={open === "about"}
           aria-controls="site-dialog"
         >
-          {prototypeStatus.aboutAction}
+          {about.aboutAction}
         </button>
       </div>
     </footer>

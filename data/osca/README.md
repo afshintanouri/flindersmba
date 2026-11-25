@@ -3,13 +3,13 @@
 The Career Explorer uses **OSCA – Occupation Standard Classification for Australia, 2024, Version 1.0**,
 published by the Australian Bureau of Statistics (© Commonwealth of Australia).
 
-## Official ABS material vs prototype interpretation
+## Official ABS material vs curated interpretation
 
 - **Official ABS material (adapted):** only the OSCA classification in `public/data/osca/`.
-- **Prototype interpretation:** career directions, the OSCA occupations connected with them for exploration,
-  career→capability mappings, capability→MBA connections and Matchmaker suggestions are curated prototype
-  interpretation layers of Flinders MBA Future. They are not ABS classifications, outputs or recommendations, and
-  they are not formally approved institutional mappings. In the app they are described in a separate *About this
+- **Curated interpretation:** career directions, the OSCA occupations connected with them for exploration,
+  career→capability mappings, capability→MBA connections and Matchmaker suggestions are curated interpretation
+  layers of Flinders MBA Future, for career exploration. They are not ABS classifications, outputs or
+  recommendations, and they are not formally approved institutional mappings. In the app they are described in a separate *About this
   tool* note, shown before the ABS attribution.
 
 ## Source
@@ -45,7 +45,7 @@ ABS logo and "Occupation Standard Classification for Australia (OSCA) branding a
 - **Attribution in the application** is configured in `content/attribution.ts` and shown, restrained, on every
   screen that displays OSCA information (creator, title and link, copyright notice, CC BY 4.0 link, modification
   notice, no-endorsement statement, link to the ABS copyright and disclaimer page).
-- **No endorsement.** The ABS does not endorse this prototype. OSCA is not used to indicate migration or employment
+- **No endorsement.** The ABS does not endorse this tool. OSCA is not used to indicate migration or employment
   eligibility.
 - The CC BY 4.0 licence covers this ABS-derived material only, not the Flinders MBA Future application.
 

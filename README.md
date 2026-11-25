@@ -1,8 +1,7 @@
 # Flinders MBA Future
 
-**Status: Prototype roadshow experience**
-
-An interactive prototype for exploring:
+An interactive MBA discovery tool **developed by Flinders University for demonstration purposes at the Vietnam
+Roadshow**. It is designed to help prospective students explore MBA study options and potential career pathways:
 
 - **MBA directions**: the MBA Matchmaker matches a visitor's ambitions, interests and preferred experiences to the
   Flinders MBA specialisations;
@@ -15,21 +14,20 @@ An interactive prototype for exploring:
 
 It is a fully static, client-side site deployed to GitHub Pages at https://afshintanouri.github.io/flindersmba/.
 
-## Prototype governance
+## Status and approved wording
 
-- This repository contains a **prototype / demonstration** application, developed for roadshow and demonstration
-  purposes.
-- It is **not** presented as an approved institutional production system, career-advice service,
-  occupation-classification tool or recommendation engine. If it is adopted more broadly, the relevant Flinders
-  University areas may review it.
-- **Official course information should be confirmed through official Flinders University sources** (the Flinders
-  University course pages).
+- Flinders University **Marketing and Compliance have approved the visitor-facing About wording and the use of the
+  Flinders University logo** in this demonstration application (25 November 2026). This does not describe the tool as
+  a permanent or official university production system.
+- **Content is indicative only.** For current course details, entry requirements and eligibility, please refer to the
+  official Flinders University website (https://www.flinders.edu.au/).
 - Verified, factual programme information (programme names, credentials, accreditations) relates to the Flinders
-  University MBA offerings. **Matchmaker results, career directions, career→capability mappings and capability→MBA connections are
-  curated prototype interpretation layers** for exploration only. They are not ABS classifications or
-  recommendations, and they are not formally approved institutional mappings.
-- The app shows this status in its footer ("Prototype roadshow experience", *About this prototype*) and, on Career
-  Explorer pages, an *About this tool* note kept separate from the ABS attribution.
+  University MBA offerings. **Matchmaker results, career directions, career→capability mappings and capability→MBA
+  connections are curated interpretation layers** for career exploration. They are not ABS classifications or
+  recommendations.
+- In the app, the footer's *About this experience* panel shows the approved wording (About this experience,
+  Occupation data, Content information; `content/about.ts`). Career Explorer pages also show an *About this tool*
+  note, kept separate from the full ABS attribution.
 
 ## ABS / OSCA source data and attribution
 
@@ -41,10 +39,10 @@ Occupation data is adapted from:
 > © Commonwealth of Australia, licensed under
 > [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-- **Adaptation.** Source material has been adapted for use in this prototype: codes and whitespace normalised, source
+- **Adaptation.** Source material has been adapted for use in this tool: codes and whitespace normalised, source
   tables combined and restructured into static files, recorded source anomalies corrected
   (`public/data/osca/corrections.json`), and official text shown in brief.
-- **No endorsement.** The ABS does not endorse this prototype. The career directions, capability connections and MBA
+- **No endorsement.** The ABS does not endorse this tool. The career directions, capability connections and MBA
   suggestions are not ABS outputs.
 - **Copyright and disclaimer:** https://www.abs.gov.au/website-privacy-copyright-and-disclaimer (the ABS excludes,
   among others, the Commonwealth Coat of Arms, the ABS logo and OSCA branding and artwork from its licence; none of
@@ -62,13 +60,12 @@ See [`data/osca/README.md`](data/osca/README.md) for how the dataset was produce
   application.
 - **Third-party assets keep their own licences**: see [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) (Barlow
   fonts under the SIL Open Font License 1.1; npm dependencies under their own licences).
-- **Brand.** This public prototype does not distribute official Flinders University brand artwork: the header uses a
-  plain typographic product title ("FLINDERS MBA FUTURE · Prototype roadshow experience"). References to Flinders
-  University, the Flinders MBA and its programmes are factual. The Flinders University name is a trademark of
-  Flinders University and is not licensed by this repository; no formal institutional production or brand approval is
-  implied.
-- **Imagery.** The illustrative images (`public/*.webp`) are AI-generated (Google AI) for this prototype. They are not
-  photographs of actual Flinders University facilities, students, staff or locations.
+- **Brand.** The Flinders University logo (`public/flinders.svg`) is a trademark of Flinders University, used in
+  this demonstration application with the approval of Flinders University Marketing and Compliance. It is not licensed
+  by this repository for any other use. References to Flinders University, the Flinders MBA and its programmes are
+  factual.
+- **Imagery.** The illustrative images (`public/*.webp`) are AI-generated (Google AI) for this application. They are
+  not photographs of actual Flinders University facilities, students, staff or locations.
 
 ## Technical summary
 
@@ -83,7 +80,7 @@ app/            layout, single page, global CSS (design system)
 components/     screens and shared UI
 content/        typed content records, provenance and validation; generated career data
 lib/            routes, journey state and storage, share codec, Matchmaker, OSCA loading and validation
-public/         fonts, AI-generated illustrative images, .nojekyll, generated OSCA dataset (public/data/osca/)
+public/         fonts, Flinders University logo, AI-generated illustrative images, .nojekyll, OSCA dataset (public/data/osca/)
 data/           OSCA dataset notes; checksums of the generated data
 scripts/        local static server; generated-data checksum verification
 tests/          Playwright smoke, visual and unit tests

@@ -1853,7 +1853,11 @@ dialog::backdrop {
 .site-footer-inner > .footer-status { gap: 0 10px; color: var(--muted); font-size: 13px; }
 .footer-status .micro { color: var(--ink, inherit); }
 .footer-about { margin-left: auto; font-size: 13px; color: var(--muted); }
-.about-panel > p:first-child { line-height: 1.5; margin: 0 0 4px; }
+.about-panel section + section { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.about-panel p { margin: 0; line-height: 1.5; }
+.about-panel h3.micro { font-size: 12px; letter-spacing: 0.15em; color: var(--muted); line-height: 1.25; margin: 0 0 6px; }
+.about-panel .note { margin: 0; }
+.about-panel a { text-decoration: underline; text-underline-offset: 2px; font-weight: 600; color: var(--ink); }
 .career-about { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); max-width: 850px; }
 .career-about h2.micro { font-size: 12px; letter-spacing: 0.15em; color: var(--muted); margin: 0; }
 .career-about .note { margin: 8px 0 0; }
@@ -1877,6 +1881,9 @@ dialog::backdrop {
   .site-footer-inner { padding: 14px 0 20px; }
   .footer-contact { font-size: 18px; }
   .site-footer-inner > .footer-status, .footer-about { font-size: 16px; }
+  .about-panel p { font-size: 19px; }
+  .about-panel .note { font-size: 17px; }
+  .about-panel h3.micro { font-size: 14px; }
   .career-about { max-width: 1100px; }
   .career-about h2.micro { font-size: 14px; }
   .contact-section { max-width: 1100px; padding: 30px 34px; }
@@ -1888,6 +1895,10 @@ dialog::backdrop {
   .site-footer-inner { padding: 20px 0 28px; }
   .footer-contact { font-size: 22px; min-height: 60px; }
   .site-footer-inner > .footer-status, .footer-about { font-size: 20px; }
+  .about-panel p { font-size: 24px; }
+  .about-panel .note { font-size: 21px; }
+  .about-panel h3.micro { font-size: 17px; }
+  .about-panel section + section { margin-top: 24px; padding-top: 20px; }
   .footer-about { min-height: 60px; }
   .career-about { max-width: 1500px; }
   .career-about h2.micro { font-size: 17px; }
@@ -1899,25 +1910,4 @@ dialog::backdrop {
 }
 @media (prefers-reduced-motion: no-preference) {
   .finale .contact-section { animation: fade-rise 0.35s 1.05s var(--ease-out) backwards; }
-}
-
-/* ================================================================== */
-/* Public prototype: typographic product title in the header (no      */
-/* university brand artwork). Existing tokens and type scale only.    */
-/* ================================================================== */
-.brand-text { flex-direction: column; align-items: flex-start; justify-content: center; gap: 3px; text-align: left; }
-.brand-text > .brand-title { padding-left: 0; border-left: 0; font-size: 17px; font-weight: 600; letter-spacing: 0.045em; line-height: 1.1; white-space: nowrap; }
-.brand-text > .brand-status { font-size: 12px; font-weight: 400; color: #c9cedb; letter-spacing: 0.02em; line-height: 1.2; white-space: nowrap; }
-@media (max-width: 650px) {
-  .brand-text { gap: 2px; }
-  .brand-text > .brand-title { font-size: 13px; letter-spacing: 0.015em; }
-}
-@media (min-width: 2200px) {
-  .brand-text > .brand-title { font-size: 20px; }
-  .brand-text > .brand-status { font-size: 15px; }
-}
-@media (min-width: 3000px) {
-  .brand-text { gap: 5px; }
-  .brand-text > .brand-title { font-size: 26px; }
-  .brand-text > .brand-status { font-size: 19px; }
 }

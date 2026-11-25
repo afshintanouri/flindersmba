@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync } from "node:fs";
 import { execSync } from "node:child_process";
-import { prototypeStatus } from "@/content/prototype";
+import { aboutExperience, contentInfoText, OFFICIAL_FLINDERS_URL } from "@/content/about";
 import { careerClusters, careerDirections, experiences, programs } from "@/content";
 import { oscaAttribution } from "@/content/attribution";
 import { isKioskSearch, KIOSK_IDLE_RESET_MS, KIOSK_IDLE_WARNING_MS, KIOSK_STORAGE_KEY } from "@/lib/kiosk";
@@ -86,8 +86,10 @@ test.describe("source attribution (ABS CC BY 4.0)", () => {
     expect(a.licenceUrl).toBe("https://creativecommons.org/licenses/by/4.0/");
     expect(a.sourceUrl).toMatch(/^https:\/\/www\.abs\.gov\.au\/statistics\/classifications\/osca-occupation-standard-classification-australia\/2024-version-1-0$/);
     expect(a.disclaimerUrl).toBe("https://www.abs.gov.au/website-privacy-copyright-and-disclaimer");
-    expect(a.modified).toMatch(/^Source material has been adapted for use in this prototype: codes and whitespace normalised, source tables combined and official text shown in brief\.$/);
-    expect(a.notEndorsed).toBe("The ABS does not endorse this prototype.");
+    expect(a.modified).toBe(
+      "Source material has been adapted for use in this tool: codes and whitespace normalised, source tables combined and official text shown in brief.",
+    );
+    expect(a.notEndorsed).toBe("The ABS does not endorse this tool.");
     const meta = JSON.parse(readFileSync("public/data/osca/metadata.json", "utf8"));
     expect(meta.licenceStatus).toBe(a.status);
     expect(meta.licence.url).toBe(a.licenceUrl);
@@ -99,15 +101,41 @@ test.describe("source attribution (ABS CC BY 4.0)", () => {
   });
 });
 
-test.describe("prototype status and governance wording", () => {
-  test("states the prototype status and separates ABS data from prototype interpretation", () => {
-    expect(prototypeStatus.label).toBe("Prototype roadshow experience");
-    expect(prototypeStatus.statement).toBe(
-      "This is a prototype MBA discovery experience developed for roadshow and demonstration purposes. Official course information should be confirmed through Flinders University course pages.",
+test.describe("approved About / source wording (Marketing and Compliance, 25 Nov 2026)", () => {
+  test("About this experience, occupation data and content information match the approved text", () => {
+    expect(aboutExperience.aboutAction).toBe("About this experience");
+    expect(aboutExperience.aboutHeading).toBe("About this experience");
+    expect(aboutExperience.about).toBe(
+      "This interactive MBA discovery tool has been developed by Flinders University for demonstration purposes at the Vietnam Roadshow. It is designed to help prospective students explore MBA study options and potential career pathways.",
     );
-    expect(prototypeStatus.careerAbout).toBe(
-      "OSCA occupation data is sourced from the Australian Bureau of Statistics. Career directions, capability connections and MBA suggestions in this prototype are provided for exploratory purposes only and are not ABS classifications or recommendations.",
+    expect(aboutExperience.occupationDataHeading).toBe("Occupation data");
+    expect(aboutExperience.occupationData).toBe(
+      "Australian Bureau of Statistics (ABS), OSCA – Occupation Standard Classification for Australia, 2024, Version 1.0 (CC BY 4.0, adapted). Full attribution is provided on the Career Explorer pages. The ABS does not endorse this tool.",
     );
+    expect(aboutExperience.contentHeading).toBe("Content information");
+    expect(contentInfoText()).toBe(
+      "Content is indicative only. For current course details, entry requirements and eligibility, please refer to the official Flinders University website.",
+    );
+    expect(aboutExperience.contentInfo.linkText).toBe("official Flinders University website");
+  });
+
+  test("the official Flinders University website link is the verified homepage", () => {
+    const u = new URL(OFFICIAL_FLINDERS_URL);
+    expect(u.href).toBe("https://www.flinders.edu.au/");
+    expect(u.protocol).toBe("https:");
+    expect(u.hostname).toBe("www.flinders.edu.au");
+  });
+
+  test("Career Explorer note keeps exploration purpose and separates curated connections from ABS data", () => {
+    expect(aboutExperience.careerAbout).toBe(
+      "Career directions, capability connections and MBA suggestions are curated interpretations for career exploration. They are not ABS classifications or recommendations.",
+    );
+  });
+
+  test("superseded prototype wording is gone from the interface", () => {
+    const ui = ["components", "content"].flatMap((d) => execSync(`git ls-files ${d}`, { encoding: "utf8" }).split("\n")).filter((f) => /\.(tsx?)$/.test(f));
+    const text = ui.map((f) => readFileSync(f, "utf8")).join("\n");
+    expect(text).not.toMatch(/Prototype roadshow experience|About this prototype|does not endorse this prototype/);
   });
 
   test("no institutional-authority or migration wording in app copy or documentation", () => {

@@ -11,7 +11,7 @@
  * The record covers CC BY 4.0 section 3(a): creator, copyright notice,
  * licence notice and link, a reference to the disclaimer, a link to the
  * material, and an indication that it has been modified. It also states that
- * the ABS does not endorse this prototype (CC BY 4.0 s2(a)(6)).
+ * the ABS does not endorse this tool (CC BY 4.0 s2(a)(6)).
  * Change it here only: every screen showing official OSCA information
  * renders it through components/careers.tsx (OscaSource).
  */
@@ -26,11 +26,11 @@ export const oscaAttribution = {
   disclaimerUrl: "https://www.abs.gov.au/website-privacy-copyright-and-disclaimer",
   /** Indication of modification (CC BY 4.0 s3(a)(1)(B)). */
   modified:
-    "Source material has been adapted for use in this prototype: codes and whitespace normalised, source tables combined and official text shown in brief.",
+    "Source material has been adapted for use in this tool: codes and whitespace normalised, source tables combined and official text shown in brief.",
   /**
-   * No endorsement (CC BY 4.0 s2(a)(6)). The prototype's career, capability and
-   * MBA layers are described separately (content/prototype.ts, careerAbout).
+   * No endorsement (CC BY 4.0 s2(a)(6)). The career, capability and
+   * MBA layers are described separately (content/about.ts, careerAbout).
    */
-  notEndorsed: "The ABS does not endorse this prototype.",
+  notEndorsed: "The ABS does not endorse this tool.",
   status: "cc-by-4.0" as const,
 };

@@ -34,20 +34,34 @@ test.describe("MBA team contact", () => {
     await expect(dialog.locator("input, form, textarea")).toHaveCount(0);
   });
 
-  test("footer shows the prototype status and opens About this prototype", async ({ page }) => {
+  test("footer opens About this experience with the approved wording and official website link", async ({ page }) => {
     await seed(page, null);
     await open(page, "home");
     const footer = page.locator("footer.site-footer");
     await expect(footer).toContainText("FLINDERS MBA FUTURE");
-    await expect(footer).toContainText("Prototype roadshow experience");
-    const about = footer.getByRole("button", { name: "About this prototype" });
+    await expect(footer).not.toContainText(/prototype/i);
+    const about = footer.getByRole("button", { name: "About this experience" });
     expect((await about.boundingBox())!.height).toBeGreaterThanOrEqual(44);
     await about.click();
     await expect(about).toHaveAttribute("aria-expanded", "true");
-    const dialog = page.getByRole("dialog", { name: "About this prototype" });
-    await expect(dialog).toContainText("developed for roadshow and demonstration purposes");
-    await expect(dialog).toContainText("The ABS does not endorse this prototype.");
-    await expect(dialog.locator("a[href]")).toHaveCount(0);
+    const dialog = page.getByRole("dialog", { name: "About this experience" });
+    await expect(dialog.getByRole("heading", { level: 2 })).toHaveText(/About this experience/i);
+    await expect(dialog).toContainText(
+      "This interactive MBA discovery tool has been developed by Flinders University for demonstration purposes at the Vietnam Roadshow. It is designed to help prospective students explore MBA study options and potential career pathways.",
+    );
+    await expect(dialog.getByRole("heading", { name: "OCCUPATION DATA" })).toBeVisible();
+    await expect(dialog).toContainText(
+      "Australian Bureau of Statistics (ABS), OSCA – Occupation Standard Classification for Australia, 2024, Version 1.0 (CC BY 4.0, adapted). Full attribution is provided on the Career Explorer pages. The ABS does not endorse this tool.",
+    );
+    await expect(dialog.getByRole("heading", { name: "CONTENT INFORMATION" })).toBeVisible();
+    await expect(dialog).toContainText(
+      "Content is indicative only. For current course details, entry requirements and eligibility, please refer to the official Flinders University website.",
+    );
+    const link = dialog.getByRole("link", { name: /official Flinders University website/ });
+    await expect(link).toHaveAttribute("href", "https://www.flinders.edu.au/");
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    await expect(dialog.locator("a[href]")).toHaveCount(1);
     await expect(page.locator("footer.site-footer [role=alert], #site-dialog [role=alert]")).toHaveCount(0);
     await page.keyboard.press("Escape");
     await expect(dialog).toBeHidden();
@@ -58,11 +72,19 @@ test.describe("MBA team contact", () => {
     await open(page, "career/brand-manager");
     const about = page.locator(".career-about");
     await expect(about.getByRole("heading", { name: "ABOUT THIS TOOL" })).toBeVisible();
+    await expect(about).toContainText("curated interpretations for career exploration");
     await expect(about).toContainText("are not ABS classifications or recommendations");
     await expect(about).toContainText("provided for career exploration purposes only");
+    // The full ABS CC BY 4.0 attribution stays on Career Explorer pages.
     const source = page.locator(".osca-source");
-    await expect(source).toContainText("Source material has been adapted for use in this prototype");
-    await expect(source).toContainText("The ABS does not endorse this prototype.");
+    await expect(source).toContainText("Source: Australian Bureau of Statistics");
+    await expect(source).toContainText("OSCA – Occupation Standard Classification for Australia, 2024, Version 1.0");
+    await expect(source).toContainText("© Commonwealth of Australia, licensed under CC BY 4.0");
+    await expect(source).toContainText("Source material has been adapted for use in this tool");
+    await expect(source).toContainText("The ABS does not endorse this tool.");
+    await expect(source.getByRole("link", { name: /OSCA – Occupation Standard Classification/ })).toHaveAttribute("href", /^https:\/\/www\.abs\.gov\.au\/statistics\/classifications\/osca-/);
+    await expect(source.getByRole("link", { name: "CC BY 4.0" })).toHaveAttribute("href", "https://creativecommons.org/licenses/by/4.0/");
+    await expect(source.getByRole("link", { name: "ABS copyright and disclaimer" })).toHaveAttribute("href", "https://www.abs.gov.au/website-privacy-copyright-and-disclaimer");
     await expect(about.locator(".osca-source")).toHaveCount(0);
   });
 
@@ -120,13 +142,14 @@ test.describe("MBA team contact", () => {
     await expect(page).toHaveURL(/\?kiosk=1#journey$/);
   });
 
-  test("kiosk About panel states the prototype status without external links", async ({ page }) => {
+  test("kiosk About panel shows the approved wording without external links", async ({ page }) => {
     await seed(page, null);
     await page.goto("./?kiosk=1#home");
     await page.locator('main[data-ready="true"]').waitFor();
-    await page.getByRole("button", { name: "About this prototype" }).click();
-    const dialog = page.getByRole("dialog", { name: "About this prototype" });
-    await expect(dialog).toContainText("prototype MBA discovery experience");
+    await page.getByRole("button", { name: "About this experience" }).click();
+    const dialog = page.getByRole("dialog", { name: "About this experience" });
+    await expect(dialog).toContainText("developed by Flinders University for demonstration purposes at the Vietnam Roadshow");
+    await expect(dialog).toContainText("please refer to the official Flinders University website.");
     await expect(dialog.locator("a[href]")).toHaveCount(0);
   });
 

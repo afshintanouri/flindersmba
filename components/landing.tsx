@@ -1,4 +1,3 @@
-import { prototypeStatus } from "@/content/prototype";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -125,16 +124,15 @@ export function Header({
   return (
     <header className="top">
       <div className="wrap top-inner">
-        {/* Public prototype: a typographic product title, not university brand artwork. */}
         <button
-          className="brand brand-text"
+          className="brand"
           onClick={() => go("home")}
           aria-label="Flinders MBA Future home"
         >
-          <span className="brand-title">
-            FLINDERS MBA <b>FUTURE</b>
+          <img src="./flinders.svg" alt="Flinders University" />
+          <span>
+            MBA <b>FUTURE</b>
           </span>
-          <small className="brand-status">{prototypeStatus.label}</small>
         </button>
         <button className="journey" onClick={() => go("journey")}>
           <Route size={16} />
