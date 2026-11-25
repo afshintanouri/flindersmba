@@ -1,9 +1,9 @@
 {
   "$comment": "Approved visual baseline. CI builds this commit, screenshots it with the current tests and fails on any difference. \"initial\" means this repository's first commit: the approved release snapshot. To approve an intentional visual change: review the diff images from the failing Validate run, then set approvedCommit to the commit that introduced the change (full hash) and add a history entry.",
-  "approvedCommit": "initial",
-  "approvedOn": "2026-11-22",
+  "approvedCommit": "38c5c4d4f5085fa3d7d0e47cfe1a2409aeffc141",
+  "approvedOn": "2026-11-25",
   "approvedBy": "Afshin Tanouri",
-  "reason": "Initial public release: the approved prototype release build.",
+  "reason": "Vietnam Roadshow release: Marketing/Compliance-approved wording and Flinders University logo.",
   "history": [
     {
       "commit": "initial",
@@ -19,6 +19,26 @@
         "kiosk"
       ],
       "reason": "Initial public release snapshot of the validated and approved prototype release build (all 72 screenshots): MBA Matchmaker, Career Explorer, Capability Bridge, Experience Hub and My MBA Future; prototype roadshow status in the footer and About this prototype; Career Explorer About this tool note; ABS CC BY 4.0 attribution with adaptation notice and non-endorsement statement; MBA team contact; share wording 'My MBA Future'."
+    },
+    {
+      "commit": "38c5c4d4f5085fa3d7d0e47cfe1a2409aeffc141",
+      "approvedOn": "2026-11-25",
+      "approvedBy": "Afshin Tanouri",
+      "screens": [
+        "all 18 screens (header and footer)",
+        "08-compare",
+        "11-career-profile",
+        "11b-career-contemporary",
+        "12-capability-bridge"
+      ],
+      "viewports": [
+        "phone",
+        "tablet",
+        "desktop",
+        "kiosk"
+      ],
+      "validateRun": "https://github.com/afshintanouri/flindersmba/actions/runs/45587742264",
+      "reason": "Flinders University Marketing/Compliance-approved Vietnam Roadshow release (all 72 screenshots). Header: approved Flinders University logo restored (replacing the interim typographic product title). Footer: 'FLINDERS MBA FUTURE', 'Questions about your MBA? Talk to the MBA team' and 'About this experience'. About this experience panel (covered by browser tests, not screenshots): approved About this experience wording, Occupation Data wording and the indicative-content disclaimer linking to the official Flinders University website. Career Explorer: revised About this tool note and ABS attribution terminology (full CC BY 4.0 attribution retained). Compare: 'A dash means the capability is not a listed specialist focus for that MBA.' Reviewed before approval: Validate #2 failed only in the visual comparison (181 unit and 156 browser tests, generated-data checksums, build and export checks passed); every screenshot changes in the header; beyond it, 55 change only in the footer, 4 Compare screenshots in that sentence, 12 Career Explorer screenshots from the About this tool note down, kiosk Q3 known anti-aliasing noise only; recommendation, data and mapping outputs unchanged."
     }
   ]
 }
