@@ -36,6 +36,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history: the unit tests check that the approved visual-baseline
+          # commit (tests/visual-baseline.json) exists in this repository.
+          fetch-depth: 0
 
       - uses: pnpm/action-setup@v4 # version read from package.json "packageManager" (pnpm@12.3.4)
 
